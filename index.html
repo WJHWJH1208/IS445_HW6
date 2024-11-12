@@ -1,0 +1,72 @@
+---
+layout: default
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW6 Visualizations</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .chart-container {
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Visualization 1: Distribution of Building Status -->
+    <div class="chart-container">
+        <h2>relationship between cloud cover and average temperature across seasons.</h2>
+        <p>
+            <strong>Description:</strong> This scatter plot shows the relationship between cloud cover and average temperature across seasons.
+        </p>
+        <p>
+            Encoding: The x-axis is cloud cover (0-100%), and the y-axis is average temperature (°F).
+            Color Scheme: Seasons are color-coded to differentiate patterns, with semi-transparent circles to reduce overlap.
+        </p>
+        <p>
+            Data was filtered for valid cloud cover and temperature values, with cloud cover normalized to 0-1.
+        </p>
+        <p>
+            <strong>Comparison with previous Homework #5:</strong> "In Homework #5, color was used for seasons but lacked interactivity and data cleaning." For this homework, I added interactivity, tooltips, and data filtering.
+        </p>
+        <div id="chart1"></div>
+        <script>
+            vegaEmbed('#chart1', '{{ "/assets/js/cloud_temp_chart.json" | relative_url }}')
+                .then(() => console.log("Chart 1 loaded"))
+                .catch(console.error);
+        </script>
+    </div>
+
+    <!-- Visualization 2: Distribution of the Number of Buildings by County -->
+    <div class="chart-container">
+        <h2>relationship between Latitude and Wind Speed Distribution Across Seasons</h2>
+        <p>
+            <strong>Description:</strong> This scatter plot shows the relationship between latitude and wind speed across seasons. Latitude is on the x-axis (limited to 25-50 degrees), and wind speed is on the y-axis. Each season has a distinct color, and semi-transparent circles reduce overlap, enhancing readability. Tooltips offer additional details.
+        </p>
+        <p>
+            The dataset was filtered to include valid dates and known seasons only, ensuring data accuracy.
+        </p>
+        <p>
+            <strong>Comparison with previous Homework #5:</strong>  Compared to HW5, this version adds seasonal color coding, constrained latitude range, and improved point opacity, making seasonal patterns clearer and the chart more readable.
+        </p>
+
+        <div id="chart2"></div>
+        <script>
+            vegaEmbed('#chart2', '{{ "/assets/js/latitude_wind_season_chart.json" | relative_url }}')
+                .then(() => console.log("Chart 2 loaded"))
+                .catch(console.error);
+        </script>
+    </div>
+
+</body>
+</html>
