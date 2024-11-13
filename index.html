@@ -19,14 +19,7 @@ layout: default
         .chart-container {
             margin-bottom: 50px;
         }
-        #chart1 {
-            height: 500px;
-            width: 100%;
-        }
-        #chart2 {
-            height: 500px;
-            width: 100%;
-        }
+
 
     </style>
 </head>
@@ -50,8 +43,8 @@ layout: default
         </p>
         <div id="chart1"></div>
         <script>
-            vegaEmbed('#latitude_wind_season_chart', '/assets/js/building_status_distribution.json.json')
-                .then(() => console.log('latitude_wind_season_chart loaded'))
+            vegaEmbed('#chart1', '{{ "/assets/js/building_status_distribution.json" | relative_url }}')
+                .then(() => console.log("Chart 1 loaded"))
                 .catch(console.error);
         </script>
     </div>
